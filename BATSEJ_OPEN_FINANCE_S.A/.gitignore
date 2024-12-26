@@ -1,0 +1,34 @@
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Archivos de salida
+*.log
+*.csv
+resultados/
+
+# Archivos de base de datos
+*.sqlite
+*.sqlite3
+
+# Archivos de compilación y distribución
+dist/
+build/
+*.egg-info/
+
+# Archivos generados por herramientas de empaquetado
+*.spec
+
+# Otros archivos temporales
+*.bak
+*.swp
+*.tmp
+
+# Archivos de sistema
+.DS_Store    # MacOS
+Thumbs.db    # Windows
