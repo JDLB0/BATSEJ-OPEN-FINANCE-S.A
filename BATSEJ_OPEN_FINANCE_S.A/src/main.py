@@ -7,9 +7,17 @@ from datetime import datetime
 
 def obtener_ruta_base():
     """
-    Encuentra la ruta base del proyecto buscando la carpeta 'Prueba Analista'.
+    Busca y retorna la ruta base del proyecto navegando hacia arriba en el árbol de directorios.
+
+    La función busca específicamente la carpeta 'BATSEJ-OPEN-FINANCE-S.A' como punto de referencia
+    para establecer la ruta base del proyecto.
+
     Returns:
-        str: Ruta base del proyecto.
+        str: Ruta completa al directorio base del proyecto.
+
+    Raises:
+        FileNotFoundError: Si no se encuentra la carpeta 'BATSEJ-OPEN-FINANCE-S.A'
+            en ningún nivel superior del árbol de directorios.
     """
     ruta_actual = os.getcwd()
     while not os.path.basename(ruta_actual).upper() == "BATSEJ-OPEN-FINANCE-S.A":
@@ -20,17 +28,47 @@ def obtener_ruta_base():
 
 def mostrar_menu():
     """
-    Muestra el menú de opciones al usuario.
+    Muestra el menú principal de opciones del programa.
+
+    Imprime en consola un menú formateado con las siguientes opciones:
+    1. Cargar datos de la base de datos
+    2. Calcular comisiones
+    3. Generar reporte en Excel
+    4. Enviar reporte por correo
+    5. Salir
+
+    Note:
+        Esta función solo muestra el menú y no procesa la entrada del usuario.
+        El procesamiento de la selección se realiza en la función main().
     """
     print("\n--- Menú de Opciones ---")
     print("1. Cargar datos de la base de datos")
     print("2. Calcular comisiones")
     print("3. Generar reporte en Excel")
-    print("4. Enviar reporte por correo")
+    print("4. Enviar reporte por correo(Separados por ;)")
     print("5. Salir")
     print("------------------------")
 
 def main():
+    """
+    Función principal que ejecuta el flujo del programa de gestión de comisiones.
+
+    Esta función implementa el bucle principal del programa y maneja la interacción
+    con el usuario a través de un menú de opciones. Coordina las siguientes funcionalidades:
+    - Carga de datos desde la base de datos SQLite
+    - Cálculo de comisiones
+    - Generación de reportes Excel
+    - Envío de correos con los reportes
+
+    El programa mantiene el estado de los datos entre operaciones y verifica que las
+    operaciones se realicen en el orden correcto (por ejemplo, que los datos estén
+    cargados antes de calcular comisiones).
+
+    Note:
+        - Requiere que exista la estructura de directorios correcta
+        - Los archivos de salida se guardan con timestamp en el nombre
+        - Utiliza Outlook para el envío de correos
+    """
     
     datos_apicall = None
     datos_commerce = None

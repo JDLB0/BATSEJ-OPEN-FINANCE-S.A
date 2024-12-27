@@ -43,32 +43,33 @@ def calcular_comisiones(datos_apicall, datos_commerce):
         if empresa == "Innovexa Solutions":
             valor_comision = peticiones_exitosas * 300
         elif empresa == "NexaTech Industries":
-            if peticiones_exitosas <= 10000:
+            if 0 <= peticiones_exitosas <= 10000:  # Rango 0-10.000
                 valor_comision = peticiones_exitosas * 250
-            elif peticiones_exitosas <= 20000:
+            elif 10001 <= peticiones_exitosas <= 20000:  # Rango 10.001-20.000
                 valor_comision = peticiones_exitosas * 200
-            else:
+            elif peticiones_exitosas > 20000:  # Más de 20.001
                 valor_comision = peticiones_exitosas * 170
         elif empresa == "QuantumLeap Inc.":
             valor_comision = peticiones_exitosas * 600
         elif empresa == "Zenith Corp.":
-            if peticiones_exitosas <= 22000:
+            if 0 <= peticiones_exitosas <= 22000:  # Rango 0-22.000
                 valor_comision = peticiones_exitosas * 250
-            else:
+            elif peticiones_exitosas > 22000:  # Más de 22.001
                 valor_comision = peticiones_exitosas * 130
             if peticiones_no_exitosas > 6000:
-                valor_comision *= 0.95
+                valor_comision -= valor_comision * 0.05  # Descuento del 5%
         elif empresa == "FusionWave Enterprises":
             valor_comision = peticiones_exitosas * 300
             if 2500 <= peticiones_no_exitosas <= 4500:
-                valor_comision *= 0.95
+                valor_comision -= valor_comision * 0.05  # Descuento del 5%
             elif peticiones_no_exitosas > 4500:
-                valor_comision *= 0.92
+                valor_comision -= valor_comision * 0.08  # Descuento del 8%
         else:
             valor_comision = 0
 
-        valor_iva = valor_comision * 0.19
+        valor_iva = valor_comision * 0.19 #Valor de IVA COLOMBIA
         valor_total = valor_comision + valor_iva
+
 
         return pd.Series([valor_comision, valor_iva, valor_total], index=['Valor_comision', 'Valor_iva', 'Valor_Total'])
 
