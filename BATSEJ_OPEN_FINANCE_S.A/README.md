@@ -16,29 +16,11 @@ Antes de comenzar, asegúrate de tener instalado:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/BATSEJ-OPEN-FINANCE-S.A.git
+git clone https://github.com/JDLB0/BATSEJ-OPEN-FINANCE-S.A.git
 cd BATSEJ-OPEN-FINANCE-S.A
 ```
 
-### 2. Crear y activar el entorno virtual
 
-#### En Windows:
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-#### En macOS/Linux:
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Instalar dependencias
-
-```bash
-pip install -r requirements.txt
-```
 
 ## 📁 Estructura del Proyecto
 
@@ -73,18 +55,10 @@ BATSEJ-OPEN-FINANCE-S.A/
 
 ## 🔧 Uso
 
-1. Activar el entorno virtual (si no está activado):
-   ```bash
-   venv\Scripts\activate  # Windows
-   source venv/bin/activate  # macOS/Linux
-   ```
+1. Ejecutar el programa principal Comisionador_BATSEJ.bat:
 
-2. Ejecutar el programa principal:
-   ```bash
-   python src/main.py
-   ```
 
-3. Seguir las opciones del menú:
+2. Seguir las opciones del menú:
    - Opción 1: Cargar datos de la base de datos
    - Opción 2: Calcular comisiones
    - Opción 3: Generar reporte en Excel

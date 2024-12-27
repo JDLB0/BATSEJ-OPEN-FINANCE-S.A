@@ -12,9 +12,6 @@ __pycache__/
 *.csv
 resultados/
 
-# Archivos de base de datos
-*.sqlite
-*.sqlite3
 
 # Archivos de compilación y distribución
 dist/
