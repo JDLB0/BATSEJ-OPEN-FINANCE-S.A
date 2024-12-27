@@ -28,9 +28,42 @@ CALL venv\Scripts\activate.bat
 
 
 REM Instalar dependencias
+
 ECHO Instalando dependencias...
+
+ 
+
+REM Primer intento con pip normal
+
 python -m pip install --upgrade pip
+
 pip install -r requirements.txt
+
+ 
+
+REM Si el primer intento falla, intentar con el repositorio alternativo
+
+IF %ERRORLEVEL% NEQ 0 (
+
+    ECHO El primer intento falló. Intentando con repositorio alternativo...
+
+    pip install -r requirements.txt -i https://artifactory.apps.bancolombia.com/api/pypi/pypi-bancolombia/simple --trusted-host artifactory.apps.bancolombia.com
+
+)
+
+ 
+
+IF %ERRORLEVEL% EQU 0 (
+
+    ECHO Instalación completada exitosamente.
+
+) ELSE (
+
+    ECHO Error en la instalación de dependencias.
+
+    EXIT /B 1
+
+)
 
 REM Verificar la estructura del proyecto
 IF NOT EXIST "data\database.sqlite" (
